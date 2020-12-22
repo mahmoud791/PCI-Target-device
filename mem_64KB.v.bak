@@ -15,7 +15,7 @@ module mem_4GB (
 		if(control == 4'b0001)
                 data_out <= mem[address];
 		else if(control == 4'b0010)
-		mem[address]<=data_in;
+		data_in<=mem[address];
         end
 
 
