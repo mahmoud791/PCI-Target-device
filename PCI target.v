@@ -14,11 +14,11 @@ module PCI_TARGET (
     reg [31:0] ADDR ;
     reg [31:0] DATA ;
     reg data_out_enable;
-    reg data_in_enable;
     assign ADDR_DATA = data_out_enable? DATA : 32'bZ;
-    assign DATA = data_in_enable? ADDR_DATA : 32'bZ;
     wire [31:0] data_out;
-    mem_64KB mymem (ADDR,DATA,C_BE,data_out);  
+    reg [31:0] data_in;
+    reg write_enable;
+    mem_64KB mymem (ADDR,data_in,write_enable,data_out);  
 
     parameter standby = 4'b0000 ,
               turn_around = 4'b0001 ,
@@ -192,6 +192,7 @@ module PCI_TARGET (
                              DEVSEL <=1;
 				   end
                      write_data: begin 
+			write_enable <= 1;
 			data_in <= ADDR_DATA;
 				   end
                      wait_initiator_w: begin 

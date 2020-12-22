@@ -1,7 +1,7 @@
 module mem_4GB (
     input wire [31:0] address,
     input wire [31:0] data_in,
-    input wire [3:0] control,
+    input wire control,
     output reg [31:0] data_out   
 );
 
@@ -12,10 +12,11 @@ module mem_4GB (
 
     always @(address)
         begin
-		if(control == 4'b0001)
-                data_out <= mem[address];
-		else if(control == 4'b0010)
+
+		if(control == 1'b1)
 		mem[address]<=data_in;
+		else
+                data_out <= mem[address];
         end
 
 
