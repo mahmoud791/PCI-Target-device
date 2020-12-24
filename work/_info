@@ -8,47 +8,91 @@ z2
 !i10f 100
 cModel Technology
 dC:/Modeltech_pe_edu_10.4a/examples
+vmem_4GB
+!s110 1608829907
+!i10b 1
+!s100 :Yj:Ce4CE4aS[Z5@R8J>83
+IBaISnKSlF_33D8;YR7h^J3
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 dC:/Users/ashry/Desktop/PCI TARGET/PCI-Target-device
+w1608829902
+Z2 8C:\Users\ashry\Desktop\PCI TARGET\PCI-Target-device\mem_64KB.v
+Z3 FC:\Users\ashry\Desktop\PCI TARGET\PCI-Target-device\mem_64KB.v
+L0 1
+Z4 OP;L;10.4a;61
+r1
+!s85 0
+31
+!s108 1608829907.000000
+Z5 !s107 C:\Users\ashry\Desktop\PCI TARGET\PCI-Target-device\mem_64KB.v|
+Z6 !s90 -reportprogress|300|-work|work|-stats=none|C:\Users\ashry\Desktop\PCI TARGET\PCI-Target-device\mem_64KB.v|
+!s101 -O0
+!i113 1
+Z7 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+nmem_4@g@b
 vmem_64KB
-Z0 !s110 1608601837
+!s110 1608601837
 !i10b 1
 !s100 R_>DYL6O;WgbhZDVcgO2X1
 IDU58Sf1IdK;^Ae3N^z`W^3
-Z1 VDg1SIo80bB@j0V0VzS_@n1
-Z2 dC:/Users/ashry/Desktop/PCI TARGET/PCI-Target-device
+R0
+R1
 w1608601763
-8C:\Users\ashry\Desktop\PCI TARGET\PCI-Target-device\mem_64KB.v
-FC:\Users\ashry\Desktop\PCI TARGET\PCI-Target-device\mem_64KB.v
+R2
+R3
 L0 1
-Z3 OP;L;10.4a;61
+R4
 r1
 !s85 0
 31
-Z4 !s108 1608601837.000000
-!s107 C:\Users\ashry\Desktop\PCI TARGET\PCI-Target-device\mem_64KB.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:\Users\ashry\Desktop\PCI TARGET\PCI-Target-device\mem_64KB.v|
+!s108 1608601837.000000
+R5
+R6
 !s101 -O0
 !i113 1
-Z5 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+R7
 nmem_64@k@b
 vPCI_TARGET
-R0
+!s110 1608838807
 !i10b 1
-!s100 d_gVgF=`RJLHimefdlJOO2
-IABIeNY;anb3Y6J?PzSMXz1
+!s100 h<kFDKHl[U5YecdP88eYG2
+I[N4bN2]X7V2U1EeD8jdS23
+R0
 R1
-R2
-w1608601825
-8C:\Users\ashry\Desktop\PCI TARGET\PCI-Target-device\PCI target.v
-FC:\Users\ashry\Desktop\PCI TARGET\PCI-Target-device\PCI target.v
-L0 2
-R3
+w1608834584
+8C:/Users/ashry/Desktop/PCI TARGET/PCI-Target-device/PCI target.v
+FC:/Users/ashry/Desktop/PCI TARGET/PCI-Target-device/PCI target.v
+L0 1
+R4
 r1
 !s85 0
 31
-R4
-!s107 C:\Users\ashry\Desktop\PCI TARGET\PCI-Target-device\PCI target.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:\Users\ashry\Desktop\PCI TARGET\PCI-Target-device\PCI target.v|
+!s108 1608838807.000000
+!s107 C:/Users/ashry/Desktop/PCI TARGET/PCI-Target-device/PCI target.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/ashry/Desktop/PCI TARGET/PCI-Target-device/PCI target.v|
 !s101 -O0
 !i113 1
-R5
+R7
 n@p@c@i_@t@a@r@g@e@t
+vtest_bench_MASTER
+!s110 1608839129
+!i10b 1
+!s100 E=;aT61?l`GeECFA4zj9_2
+I;ME8CC8;EHj3V[^g1;ned0
+R0
+R1
+w1608839124
+8C:/Users/ashry/Desktop/PCI TARGET/PCI-Target-device/test_bench.v
+FC:/Users/ashry/Desktop/PCI TARGET/PCI-Target-device/test_bench.v
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1608839129.000000
+!s107 C:/Users/ashry/Desktop/PCI TARGET/PCI-Target-device/test_bench.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/ashry/Desktop/PCI TARGET/PCI-Target-device/test_bench.v|
+!s101 -O0
+!i113 1
+R7
+ntest_bench_@m@a@s@t@e@r

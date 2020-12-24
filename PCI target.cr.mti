@@ -1,1 +1,22 @@
+{C:/Users/ashry/Desktop/PCI TARGET/PCI-Target-device/test_bench.v} {1 {vlog -work work -stats=none {C:/Users/ashry/Desktop/PCI TARGET/PCI-Target-device/test_bench.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module test_bench_MASTER
 
+Top level modules:
+	test_bench_MASTER
+
+} {} {}} {C:/Users/ashry/Desktop/PCI TARGET/PCI-Target-device/PCI target.v} {1 {vlog -work work -stats=none {C:/Users/ashry/Desktop/PCI TARGET/PCI-Target-device/PCI target.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module PCI_TARGET
+
+Top level modules:
+	PCI_TARGET
+
+} {} {}} {C:/Users/ashry/Desktop/PCI TARGET/PCI-Target-device/mem_64KB.v} {1 {vlog -work work -stats=none {C:\Users\ashry\Desktop\PCI TARGET\PCI-Target-device\mem_64KB.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module mem_4GB
+
+Top level modules:
+	mem_4GB
+
+} {} {}}

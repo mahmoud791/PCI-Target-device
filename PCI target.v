@@ -9,23 +9,7 @@ module PCI_TARGET (
     output reg DEVSEL
       );
 
-    reg [31:0] ADDR ;
-    reg [31:0] DATA ;
-    reg [31:0] DATA_IN;
-    reg data_out_enable;
-    assign ADDR_DATA = data_out_enable? DATA : 32'bZ;
-    wire [31:0] data_out;
-    reg [31:0] data_in_buffer;
-    reg write_enable;
-    reg [2:0] state,nextstate;
-    reg [3:0] CONTROL;
-    reg [3:0] BYTE_ENABLE; 
-    reg [31:0] BACKUP_BUFFER_ADDRESS;
-    reg[31:0] POINTER = {device_address,2'b00}
-    mem_4GB mymem(ADDR, DATA_IN, CONTROL, data_out);
-    mem_16reg mybuffer(BACKUP_BUFFER_ADDRESS, data_in_buffer);
-
-    parameter idle = 4'b0000,
+parameter idle = 4'b0000,
               read_address = 4'b0001,
               turnaround_read=4'b0010,
               data_read=4'b0011,
@@ -39,6 +23,26 @@ module PCI_TARGET (
               READ = 4'b0001 ,
               WRITE = 4'b0010 ,
               last_address = {device_address,2'b11};
+
+
+
+    reg [31:0] ADDR ;
+    reg [31:0] DATA ;
+    reg [31:0] DATA_IN;
+    reg [31:0] DATA_OUT;
+    reg data_out_enable;
+    assign ADDR_DATA = data_out_enable ? DATA_OUT : 32'bz;
+    wire [31:0] data_out;
+    reg [31:0] data_in_buffer;
+    reg [2:0] state,nextstate;
+    reg [3:0] CONTROL;
+    reg [3:0] BYTE_ENABLE; 
+    reg [31:0] BACKUP_BUFFER_ADDRESS;
+    reg[31:0] POINTER = {device_address,2'b00};
+    mem_4GB mymem(ADDR, DATA_IN, CONTROL, BYTE_ENABLE, data_out);
+    mem_16reg mybuffer(BACKUP_BUFFER_ADDRESS, data_in_buffer);
+
+    
               
 
    //sychrounous block of state
@@ -68,8 +72,7 @@ module PCI_TARGET (
                                   nextstate <= idle;
                               else if (FRAME == 0)
                                   ADDR <= ADDR_DATA;
-                                  CONTROL <= C_BE;
-                                  nextstate < read_address;
+                                  nextstate <= read_address;
                           end
                        read_address:
                           begin
@@ -99,7 +102,7 @@ module PCI_TARGET (
                                   nextstate <= wait_initiator;
                               else if (FRAME == 0 && IRDY == 0)
                                   begin
-                                  nextstate < data_read;
+                                  nextstate <= data_read;
                                   ADDR <= ADDR+1;
                                   if (ADDR == last_address)
                                       ADDR <= device_address;
@@ -126,6 +129,7 @@ module PCI_TARGET (
                         data_write:
                           begin
                               BYTE_ENABLE <= C_BE;
+                              DATA <= ADDR_DATA;
                               if (FRAME == 0 && IRDY == 0 && ADDR <= last_address)
                                   begin
                                       ADDR <= ADDR +1;
@@ -152,7 +156,7 @@ module PCI_TARGET (
                           begin
                               if (POINTER != last_address)
                                   begin
-                                BACKUP_BUFFER_ADDRESS <= BACKUP_BUFFER_ADDRESS+1
+                                BACKUP_BUFFER_ADDRESS <= BACKUP_BUFFER_ADDRESS+1;
                                 nextstate <= buffer_full;
                                 POINTER <= POINTER +1;
                                   end
@@ -162,7 +166,7 @@ module PCI_TARGET (
                           end
                         last_read:
                           begin
-                              nextstate <= turnaround_main
+                              nextstate <= turnaround_main;
                           end
 
                         turnaround_main:
@@ -205,14 +209,42 @@ module PCI_TARGET (
 
                               data_read:
                               begin
-                                  DATA <= data_out;
+                                  DATA_OUT <= data_out;
                               end
 
                               data_write:
                               begin
-                               DATA_IN <= ADDR_DATA & {8{BYTE_ENABLE[3]},8{BYTE_ENABLE[2]},8{BYTE_ENABLE[1]},8{BYTE_ENABLE[0]}}; 
-                               
+
+                                  DATA_IN <= DATA;
+
                               end
+
+
+                              last_write:
+                              begin
+                                DATA_IN <= DATA;
+                                TRDY <= 1;
+                                DEVSEL <=1 ;
+                              end
+
+                              last_read:
+                              begin
+                                DATA_OUT <= data_out;
+                                TRDY <= 1;
+                                DEVSEL <=1 ;
+
+                              end
+
+
+                            turnaround_main:
+                              begin
+                                  DEVSEL <= 1;
+                                  TRDY <=1;
+                              end
+
+
+
+                              
                               
                               
 
